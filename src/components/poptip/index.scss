@@ -1,0 +1,131 @@
+$triangle_color: rgba(
+    $color: #000,
+    $alpha: 0.7
+);
+
+.wrapper {
+    position: relative;
+    display: inline-block;
+
+    .tip {
+        position: absolute;
+        z-index: 999;
+        display: inline-flex;
+
+        &_inner {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 27px 30px;
+            color: #fff;
+            background-color: $triangle_color;
+            border-radius: 10px;
+            font-size: 34px;
+        }
+
+        &_triangle {
+            width: 0;
+            height: 0;
+            border-color: $triangle_color transparent transparent transparent;
+            border-style: solid;
+            border-width: 10px 10px 0 10px;
+        }
+    }
+
+    .tip_top {
+        right: -999px;
+        left: -999px;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+
+        &_animation {
+            animation: topDebounce 500ms ease-in-out 1000ms infinite alternate;
+        }
+    }
+
+    .tip_right {
+        top: -999px;
+        bottom: -999px;
+        flex-direction: row-reverse;
+        align-items: center;
+        margin: auto 0;
+
+        .tip_triangle {
+            border-color: transparent $triangle_color transparent transparent;
+            border-width: 10px 10px 10px 0;
+        }
+
+        &_animation {
+            animation: rightDebounce 500ms ease-in-out 1000ms infinite alternate;
+        }
+    }
+
+    .tip_left {
+        top: -999px;
+        bottom: -999px;
+        align-items: center;
+        margin: auto 0;
+
+        .tip_triangle {
+            border-color: transparent transparent transparent $triangle_color;
+            border-width: 10px 0 10px 10px;
+        }
+
+        &_animation {
+            animation: leftDebounce 500ms ease-in-out 1000ms infinite alternate;
+        }
+    }
+
+    .tip_bottom {
+        right: -999px;
+        left: -999px;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin: 0 auto;
+
+        .tip_triangle {
+            border-color: transparent transparent $triangle_color transparent;
+            border-width: 0 10px 10px 10px;
+        }
+
+        &_animation {
+            animation: bottomDebounce 500ms ease-in-out 1000ms infinite alternate;
+        }
+    }
+
+    @keyframes topDebounce {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-6px);
+        }
+    }
+
+    @keyframes bottomDebounce {
+        from {
+            transform: translateY(6px);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes leftDebounce {
+        from {
+            transform: translateX(-6px);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes rightDebounce {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(6px);
+        }
+    }
+}
