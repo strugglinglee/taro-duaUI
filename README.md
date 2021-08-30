@@ -1,5 +1,10 @@
+> 目前有poptip组件,适用于H5和小程序
+
+![alt](./assets/poptip.png)
+
+
 ### 气泡提示组件
-![alt](/assets/poptip.png)
+
 
 #### 参数
 
